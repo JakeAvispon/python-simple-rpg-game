@@ -1,4 +1,6 @@
 # ----- RPG GAME -----
+# Juego sencillo utilazando POO en Python
+
 # CLASE PADRE
 class Character:                                            # BUENA PRACTICA - PascalCase "Character" (Primer letra mayuscula)
     def __init__(self, name: str, health: int, attack: int, defense: int):     # BUENA PRACTICA - Type Hinting "name: str, health: int, attack: int, defense: int" (Definir tipo de dato)
