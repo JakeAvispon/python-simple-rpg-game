@@ -52,6 +52,10 @@ class Mage(Character):
         else:
             print(f"¡{self.name} no tiene suficiente mana!")
             
+    def regenerate_mana(self):
+        self.mana += 15
+        print(f"¡{self.name} regenera 15 de mana!")
+            
     # POLIMORFISMO (sobreescribir un metodo)
     def __str__(self):
         base_stats = super().__str__()
