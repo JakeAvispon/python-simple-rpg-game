@@ -8,6 +8,8 @@ class Character:                                            # BUENA PRACTICA - P
         self.health = health
         self.attack = attack
         self.defense = defense
+        self.level = 1                                                          # ««« 1
+        self.experience = 0                                                     # ««« 1
         
     # CONSEJOS
     def __str__(self):
