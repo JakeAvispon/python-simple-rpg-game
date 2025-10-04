@@ -1,5 +1,6 @@
 # ----- RPG GAME -----
 # Juego sencillo utilazando POO en Python
+#   Añadir funcionalidades extra
 
 # CLASE PADRE
 class Character:                                            # BUENA PRACTICA - PascalCase "Character" (Primer letra mayuscula)
