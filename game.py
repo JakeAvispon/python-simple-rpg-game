@@ -17,10 +17,16 @@ class Character:                                            # BUENA PRACTICA - P
         return (f"--- Estado de {self.name} ---\n"
                 f"Vida: {self.health}\n"
                 f"Ataque: {self.attack}\n"
-                f"Defensa: {self.defense}")
+                f"Defensa: {self.defense}\n"
+                f"Nivel: {self.level}\n"
+                f"Puntos de XP: {self.experience}")
 
     def alive(self):
         return self.health > 0
+    
+    def gain_experience(self, xp: int):
+        self.experience += xp
+        print(f"{self.name} ha ganado {xp} puntos de experiencia")
     
     def do_damage(self, target):
         print(f"¡{self.name} ataca a {target.name}!")
@@ -30,8 +36,11 @@ class Character:                                            # BUENA PRACTICA - P
             target.health -= damage
             if not target.alive():
                 print(f"¡{target.name} ha sido derrotado!")
+            Character.gain_experience(self, damage)
         else:
             print(f"¡El ataque de {self.name} no es efectivo contra {target.name}!")
+            
+    
             
             
 # -- HERENCIA --
@@ -49,6 +58,7 @@ class Mage(Character):
             fireball_damage = 30                            # Daño magico, ignora defensa
             target.health -= fireball_damage
             print(f"¡{self.name} lanza una bola de fuego a {target.name} causando {fireball_damage} de daño!")
+            Character.gain_experience(self, fireball_damage)
         else:
             print(f"¡{self.name} no tiene suficiente mana!")
             
@@ -76,6 +86,7 @@ class Warrior(Character):
             
             target.health -= actual_damage
             print(f"¡{self.name} realiza un ataque pesado contra {target.name} causando {actual_damage} de daño!")
+            Character.gain_experience(self, actual_damage)
         else:
             print(f"¡{self.name} no tiene suficiente furia!")
             
@@ -96,6 +107,7 @@ class Archer(Character):
             
             arrow_damage = self.do_damage(target)
             print(f"¡{self.name} dispara una flecha contra {target.name} causando {arrow_damage} de daño!")
+            Character.gain_experience(self, arrow_damage)
         else:
             print(f"¡{self.name} no tiene flechas suficientes!")
             
@@ -120,3 +132,6 @@ if __name__ == "__main__":
     for character in party:
         # Polimorfismo imprime el "__str__"
         print(f"{character}\n")
+        
+    mage.cast_fireball(chief_orc)
+    print(mage)
